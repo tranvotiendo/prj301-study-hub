@@ -73,3 +73,14 @@
 - [ ] Xác nhận repository GitHub đích và trạng thái GitHub Pages.
 - [ ] Thêm workflow build và deploy Pages khi push nhánh main.
 - [ ] Xác minh workflow và hướng dẫn bật nguồn GitHub Pages nếu cần.
+
+## Khắc phục GitHub Pages 404
+
+- [ ] Kiểm tra Pages site đã được kích hoạt và URL triển khai thực tế.
+- [ ] Kiểm tra kết quả workflow deploy gần nhất.
+- [ ] Xác nhận đường dẫn GitHub Pages hoạt động sau khi khắc phục.
+
+## Sửa router GitHub Pages
+
+- [ ] Cấu hình Wouter base path theo `import.meta.env.BASE_URL`.
+- [ ] Build với base `/prj301-study-hub/` và xác minh route gốc hiển thị Home.

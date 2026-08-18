@@ -30,3 +30,7 @@ Margin ngoài của code block đã được hạ từ 2.25rem xuống 1.85rem. 
 Các nhãn section được chuyển sang phần tử định vị ở mép phải heading. Desktop và mobile đều giữ heading ở phía trái thoáng, trong khi NOTE/READ/PRACTICE/TAKEAWAY nằm gọn ở phía phải mà không đẩy nội dung chính lệch bố cục.
 
 Các heading và horizontal rule bên trong `.lesson-prose` đã bỏ đường phân cách. Khoảng cách dọc của heading được giữ lại để các phần vẫn có thứ bậc rõ, nhưng không còn cảm giác bị chia thành nhiều ô ngang.
+
+## GitHub Pages deployment
+
+Workflow đã build thành công nhưng bước deploy trả về `Not Found` vì GitHub Pages chưa được bật cho repository. GitHub API và trình duyệt sandbox không có quyền đăng nhập/quản trị repo, nên việc chọn nguồn GitHub Actions cần người dùng thực hiện trong Settings → Pages.
