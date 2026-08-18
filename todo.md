@@ -84,3 +84,8 @@
 
 - [ ] Cấu hình Wouter base path theo `import.meta.env.BASE_URL`.
 - [ ] Build với base `/prj301-study-hub/` và xác minh route gốc hiển thị Home.
+
+## Fallback đơn trang cho GitHub Pages
+
+- [ ] Render Home trực tiếp tại entry app thay vì phụ thuộc pathname của router.
+- [ ] Xác minh URL GitHub Pages gốc không còn hiển thị NotFound.
