@@ -24,3 +24,7 @@ Controls của Streamdown đã được tắt ở cấp component, loại bỏ c
 Theo ảnh đánh dấu, spacing bên ngoài của toàn bộ khung code đã được tăng lên 2.25rem để paragraph không sát khung. Bên trong khung, vùng header/footer được nén bằng `gap: 0`, padding nhỏ ở phần language label và padding code 1.1rem × 1.5rem; nhờ vậy code vẫn có khoảng thở nhưng khung không còn cao dư.
 
 Nguyên nhân lần trước là selector `data-streamdown="code-block"` nằm ở lớp nội dung, không phải wrapper tạo header trắng. CSS đã chuyển sang `data-code-block-container` cho margin bên ngoài và dùng `data-code-block-header`/`data-code-block` để nén header cùng vùng code bên trong. Nhờ đó spacer đỏ trong ảnh bị loại bỏ, còn paragraph phía dưới có khoảng cách thực từ toàn bộ khung code.
+
+Margin ngoài của code block đã được hạ từ 2.25rem xuống 1.85rem. Khoảng này vẫn tạo một nhịp phân tách rõ với text trước/sau nhưng tránh cảm giác cao và rời rạc.
+
+Các nhãn section được chuyển sang phần tử định vị ở mép phải heading. Desktop và mobile đều giữ heading ở phía trái thoáng, trong khi NOTE/READ/PRACTICE/TAKEAWAY nằm gọn ở phía phải mà không đẩy nội dung chính lệch bố cục.

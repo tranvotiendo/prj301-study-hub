@@ -52,3 +52,13 @@
 - [x] Xoá spacer trên/dưới bên trong wrapper của code block.
 - [x] Đặt margin ngoài riêng giữa code block và paragraph kế tiếp.
 - [x] Kiểm tra bằng ví dụ GET text trong tài liệu.
+
+## Cân lại spacing code block
+
+- [x] Giảm margin ngoài code block từ mức rộng xuống nhịp vừa phải.
+- [x] Xác nhận text và code vẫn tách rõ nhưng không bị cao quá.
+
+## Căn lại nhãn section
+
+- [x] Đưa các nhãn READ, PRACTICE, TAKEAWAY và NOTE sang phải heading.
+- [x] Giữ heading bên trái gọn và kiểm tra responsive trên mobile.
