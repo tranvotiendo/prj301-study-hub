@@ -67,3 +67,9 @@
 
 - [x] Bỏ đường gạch trên các heading và horizontal rule trong Markdown.
 - [x] Giữ khoảng cách dọc đủ rõ khi không còn divider.
+
+## GitHub Pages deployment
+
+- [ ] Xác nhận repository GitHub đích và trạng thái GitHub Pages.
+- [ ] Thêm workflow build và deploy Pages khi push nhánh main.
+- [ ] Xác minh workflow và hướng dẫn bật nguồn GitHub Pages nếu cần.

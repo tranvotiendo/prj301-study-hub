@@ -179,7 +179,7 @@ export default function Home() {
           </button>
           <div className="flex min-w-0 items-center gap-3.5">
             <img
-              src="/manus-storage/prj301-user-logo_e0a4de5e.webp"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663888628736/RGqeeEkMubNdeheX.webp"
               className="h-11 w-11 shrink-0 rounded-full border-2 border-[#0f766e]/45 object-cover"
               alt="Logo nhân vật người dùng chọn cho PRJ301 Study Hub"
             />
@@ -287,7 +287,7 @@ export default function Home() {
               </div>
             </div>
             <img
-              src="/manus-storage/prj301-hero-workbench_39225018.jpg"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663888628736/XXtPpgUhcaJqiAKT.jpg"
               alt="Bàn học Java Web được minh hoạ bằng giấy và thẻ kỹ thuật"
               className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[48%] object-cover mix-blend-multiply opacity-95 md:block"
             />
@@ -330,7 +330,7 @@ export default function Home() {
           </section>
 
           <section className="mt-6 overflow-hidden border border-[#d9d2c3] bg-[#fffdf7]">
-            <img src="/manus-storage/prj301-flow-card_b98aa8e4.jpg" alt="Minh hoạ luồng request và response" className="aspect-[4/2.2] w-full object-cover" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663888628736/aOaYskfHvePoOsen.jpg" alt="Minh hoạ luồng request và response" className="aspect-[4/2.2] w-full object-cover" />
             <div className="p-4">
               <p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#c65d3b]">Mindset card</p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#28434d]">Browser chỉ gửi HTTP. Container mới gọi Java.</p>
@@ -344,7 +344,7 @@ export default function Home() {
           </section>
 
           <div className="mt-6 overflow-hidden border border-[#d9d2c3] bg-[#fffdf7]">
-            <img src="/manus-storage/prj301-code-study_65216ac8.jpg" alt="Tài liệu học lập trình được sắp xếp trên bàn" className="aspect-[3/1.5] w-full object-cover object-center" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663888628736/JbPtrNbUZztMlnii.jpg" alt="Tài liệu học lập trình được sắp xếp trên bàn" className="aspect-[3/1.5] w-full object-cover object-center" />
             <div className="flex items-center justify-between p-3"><span className="text-[11px] font-bold text-[#415c5e]">Học theo nhịp của m.</span><ArrowDownToLine size={15} className="text-[#0f766e]" /></div>
           </div>
         </aside>
