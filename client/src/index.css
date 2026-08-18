@@ -194,7 +194,8 @@
     text-shadow: none !important;
   }
   .lesson-prose pre code { font-weight: 500; }
-  .lesson-prose table { display: block; width: 100%; overflow-x: auto; margin: 1.7rem 0; border-collapse: collapse; font-size: .88rem; }
+  .lesson-prose table { display: block; width: 100%; overflow-x: auto; margin: 1.7rem 0 2.2rem; border-collapse: collapse; font-size: .88rem; }
+  .lesson-prose table + p { margin-top: 0; }
   .lesson-prose th { background: #dcebe5; color: #214d50; font-weight: 800; text-align: left; }
   .lesson-prose th,
   .lesson-prose td { min-width: 100px; border: 1px solid #d1dbd5; padding: .72rem .82rem; vertical-align: top; }
