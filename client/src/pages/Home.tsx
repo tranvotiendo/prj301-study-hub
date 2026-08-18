@@ -155,9 +155,11 @@ export default function Home() {
             <Menu size={19} />
           </button>
           <div className="flex min-w-0 items-center gap-3.5">
-            <span className="relative grid h-11 w-11 shrink-0 place-items-center border border-[#9cc5bb] bg-[#e4f0e9] p-1 shadow-[3px_3px_0_#c65d3b] before:absolute before:right-0 before:top-0 before:h-2.5 before:w-2.5 before:border-b before:border-l before:border-[#0f766e] before:bg-[#f7f5ef]">
-              <img src="/manus-storage/prj301-logo_1ba44e52.png" className="h-full w-full object-contain" alt="Biểu tượng PRJ301 Study Hub" />
-            </span>
+            <img
+              src="/manus-storage/prj301-user-logo_e0a4de5e.webp"
+              className="h-11 w-11 shrink-0 rounded-[14px_3px_14px_3px] border border-[#0f766e]/45 object-cover shadow-[3px_3px_0_#c65d3b]"
+              alt="Logo nhân vật người dùng chọn cho PRJ301 Study Hub"
+            />
             <div className="min-w-0">
               <p className="font-display text-[21px] leading-none tracking-[-0.045em] text-[#17334a]">/PRJ301</p>
               <p className="mt-1 truncate text-[9px] font-extrabold uppercase tracking-[0.22em] text-[#0f766e]">Java web · study hub</p>

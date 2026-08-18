@@ -144,6 +144,8 @@
     color: #5a5350;
     font-style: normal;
   }
+  .lesson-prose blockquote,
+  .lesson-prose blockquote p { color: #4e403a; }
   .lesson-prose blockquote p:last-child { margin-bottom: 0; }
   .lesson-prose code {
     border-radius: 2px;
@@ -162,6 +164,15 @@
     background: #172d3b;
     padding: 1.25rem 1.3rem;
     box-shadow: 5px 5px 0 #d7dfd9;
+  }
+  .lesson-prose pre,
+  .lesson-prose pre.shiki,
+  .lesson-prose pre[data-language] {
+    border: 1px solid #0f766e;
+    border-left: 5px solid #0f766e;
+    background: #102c3b !important;
+    color: #f4fbfa !important;
+    box-shadow: 5px 5px 0 #b8d4cc;
   }
   .lesson-prose pre::before {
     display: block;
@@ -182,6 +193,15 @@
     font-size: .78rem;
     line-height: 1.72;
   }
+  .lesson-prose pre code,
+  .lesson-prose pre code *,
+  .lesson-prose pre span,
+  .lesson-prose pre [style] {
+    color: #eefaf7 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+  .lesson-prose pre code { font-weight: 500; }
   .lesson-prose table { display: block; width: 100%; overflow-x: auto; margin: 1.7rem 0; border-collapse: collapse; font-size: .88rem; }
   .lesson-prose th { background: #dcebe5; color: #214d50; font-weight: 800; text-align: left; }
   .lesson-prose th,
