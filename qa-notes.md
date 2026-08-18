@@ -28,3 +28,5 @@ Nguyên nhân lần trước là selector `data-streamdown="code-block"` nằm �
 Margin ngoài của code block đã được hạ từ 2.25rem xuống 1.85rem. Khoảng này vẫn tạo một nhịp phân tách rõ với text trước/sau nhưng tránh cảm giác cao và rời rạc.
 
 Các nhãn section được chuyển sang phần tử định vị ở mép phải heading. Desktop và mobile đều giữ heading ở phía trái thoáng, trong khi NOTE/READ/PRACTICE/TAKEAWAY nằm gọn ở phía phải mà không đẩy nội dung chính lệch bố cục.
+
+Các heading và horizontal rule bên trong `.lesson-prose` đã bỏ đường phân cách. Khoảng cách dọc của heading được giữ lại để các phần vẫn có thứ bậc rõ, nhưng không còn cảm giác bị chia thành nhiều ô ngang.

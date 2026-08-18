@@ -62,3 +62,8 @@
 
 - [x] Đưa các nhãn READ, PRACTICE, TAKEAWAY và NOTE sang phải heading.
 - [x] Giữ heading bên trái gọn và kiểm tra responsive trên mobile.
+
+## Loại bỏ divider nội dung
+
+- [x] Bỏ đường gạch trên các heading và horizontal rule trong Markdown.
+- [x] Giữ khoảng cách dọc đủ rõ khi không còn divider.
