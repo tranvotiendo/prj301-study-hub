@@ -33,3 +33,10 @@
 - [x] Thiết kế lại hiển thị tiến độ để phần trăm và badge không gây rối hoặc xuống dòng.
 - [x] Loại bỏ khoảng trắng thừa quanh code block và tăng nội biên cho code dễ đọc.
 - [x] Kiểm tra lại khối code cùng giao diện desktop/mobile.
+
+## Tinh chỉnh code và bảng Markdown
+
+- [x] Cân bằng khoảng cách trước/sau code block với đoạn văn lân cận.
+- [x] Ẩn các nút copy/download do bộ render Markdown thêm vào code và bảng.
+- [x] Xoá phần không gian ngang thừa của bảng, giữ kích thước vừa theo nội dung.
+- [x] Kiểm tra lại render code và table trên desktop.

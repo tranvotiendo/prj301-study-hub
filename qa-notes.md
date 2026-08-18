@@ -18,3 +18,5 @@ Thư viện đa Markdown đã được đưa vào `client/src/content/library.ts
 Chế độ Focus hiện mở rộng vùng bài học đến tối đa 100rem; phần nội dung Markdown dùng tối đa 82rem để đọc được nhiều theo chiều ngang khi cần. Sidebar và các nhãn UI cố định đã dùng tiếng Anh. Hệ thống font cho heading bài học và section chuyển sang system sans-serif có fallback; Key takeaways giờ dùng đúng style của heading cấp 2 thông thường.
 
 Headline hero hiện dùng tiếng Anh: “Trace the request. Follow the data flow.” Progress được chuyển từ display serif sang sans-serif đậm, và badge `0/5 done` được ép một dòng. Code block đã bỏ toàn bộ margin bên ngoài, đồng thời tăng padding ngang/dọc để nội dung code không sát khung và không còn khoảng trống riêng giữa vùng code với khung render.
+
+Controls của Streamdown đã được tắt ở cấp component, loại bỏ các nút copy/download trên code block và table. Mỗi code block được đặt margin trên/dưới đồng đều 1.65rem, còn pre bên trong giữ margin 0 để không tạo spacer riêng. Table chuyển sang `display: table` với `width: max-content` và `max-width: 100%`, loại bỏ vùng rỗng kéo ngang mà vẫn không tràn khung đọc.

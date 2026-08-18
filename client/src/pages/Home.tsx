@@ -303,7 +303,7 @@ export default function Home() {
           </div>
 
           <article className="lesson-prose pb-16">
-            <Streamdown>{markdown}</Streamdown>
+            <Streamdown controls={false}>{markdown}</Streamdown>
           </article>
         </main>
 
