@@ -26,3 +26,10 @@
 - [x] Dùng font hệ thống an toàn cho các nhãn section và sidebar.
 - [x] Đưa Key takeaways về kiểu chữ và cỡ chữ tương đương section thường.
 - [x] Kiểm tra giao diện đọc sau khi cập nhật.
+
+## Tinh chỉnh copy và code block
+
+- [x] Chuyển headline hero sang tiếng Anh.
+- [x] Thiết kế lại hiển thị tiến độ để phần trăm và badge không gây rối hoặc xuống dòng.
+- [x] Loại bỏ khoảng trắng thừa quanh code block và tăng nội biên cho code dễ đọc.
+- [x] Kiểm tra lại khối code cùng giao diện desktop/mobile.

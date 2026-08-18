@@ -279,7 +279,7 @@ export default function Home() {
                 <span className="h-px w-8 bg-[#0f766e]" />
                 {activeDocument?.source === "uploaded" ? "Uploaded document" : "Bundled document"}
               </div>
-              <h1 className="font-display text-3xl leading-[1.05] tracking-[-0.045em] text-[#17334a] sm:text-4xl">Đọc luồng request.<br />Hiểu đường đi của dữ liệu.</h1>
+              <h1 className="font-display text-3xl leading-[1.05] tracking-[-0.045em] text-[#17334a] sm:text-4xl">Trace the request.<br />Follow the data flow.</h1>
               <p className="mt-4 max-w-lg text-sm leading-7 text-[#52605d]">Đang đọc <strong>{activeDocument?.title ?? "tài liệu Markdown"}</strong>. Chọn file trong thư viện, hoặc thêm nhiều file <code className="rounded-sm bg-white/70 px-1.5 py-0.5 font-mono text-[11px] text-[#0f766e]">.md</code> từ máy mà không thay thế tài liệu cũ.</p>
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-[#39565b]">
                 <span className="flex items-center gap-1.5"><BookMarked size={15} className="text-[#c65d3b]" /> {coreSessions.length || 5} sessions</span>
@@ -315,8 +315,8 @@ export default function Home() {
 
           <section className="border border-[#d9d2c3] bg-[#fffdf7] p-4 shadow-[4px_4px_0_rgba(23,51,74,.07)]">
             <div className="flex items-end justify-between">
-              <div><p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7a8580]">Session progress</p><p className="mt-1 font-display text-3xl text-[#17334a]">{completion}%</p></div>
-              <span className="rounded-full bg-[#e0f0eb] px-2 py-1 text-[10px] font-bold text-[#0f766e]">{completed.length}/{coreSessions.length || 5} done</span>
+              <div><p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7a8580]">Session progress</p><p className="mt-1 font-sans text-[26px] font-extrabold leading-none tracking-[-0.04em] text-[#17334a]">{completion}%</p></div>
+              <span className="shrink-0 whitespace-nowrap rounded-full bg-[#e0f0eb] px-2.5 py-1 text-[10px] font-bold leading-none text-[#0f766e]">{completed.length}/{coreSessions.length || 5} done</span>
             </div>
             <div className="mt-4 h-2 overflow-hidden bg-[#e9e4d9]"><div className="h-full bg-[#0f766e] transition-[width] duration-300" style={{ width: `${completion}%` }} /></div>
             <div className="mt-4 space-y-2">
