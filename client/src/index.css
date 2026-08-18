@@ -167,10 +167,17 @@
     box-shadow: 5px 5px 0 #b8d4cc;
   }
   .lesson-prose [data-streamdown="code-block"] {
-    margin: 1.65rem 0 !important;
+    margin: 2.25rem 0 !important;
+    gap: 0 !important;
+  }
+  .lesson-prose [data-streamdown="code-block"] > :not(pre) {
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: .5rem 1.25rem !important;
   }
   .lesson-prose [data-streamdown="code-block"] pre {
     margin: 0 !important;
+    padding: 1.1rem 1.5rem !important;
   }
   .lesson-prose pre::before {
     display: block;

@@ -20,3 +20,5 @@ Chế độ Focus hiện mở rộng vùng bài học đến tối đa 100rem; p
 Headline hero hiện dùng tiếng Anh: “Trace the request. Follow the data flow.” Progress được chuyển từ display serif sang sans-serif đậm, và badge `0/5 done` được ép một dòng. Code block đã bỏ toàn bộ margin bên ngoài, đồng thời tăng padding ngang/dọc để nội dung code không sát khung và không còn khoảng trống riêng giữa vùng code với khung render.
 
 Controls của Streamdown đã được tắt ở cấp component, loại bỏ các nút copy/download trên code block và table. Mỗi code block được đặt margin trên/dưới đồng đều 1.65rem, còn pre bên trong giữ margin 0 để không tạo spacer riêng. Table chuyển sang `display: table` với `width: max-content` và `max-width: 100%`, loại bỏ vùng rỗng kéo ngang mà vẫn không tràn khung đọc.
+
+Theo ảnh đánh dấu, spacing bên ngoài của toàn bộ khung code đã được tăng lên 2.25rem để paragraph không sát khung. Bên trong khung, vùng header/footer được nén bằng `gap: 0`, padding nhỏ ở phần language label và padding code 1.1rem × 1.5rem; nhờ vậy code vẫn có khoảng thở nhưng khung không còn cao dư.

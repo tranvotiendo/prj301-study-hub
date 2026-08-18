@@ -40,3 +40,9 @@
 - [x] Ẩn các nút copy/download do bộ render Markdown thêm vào code và bảng.
 - [x] Xoá phần không gian ngang thừa của bảng, giữ kích thước vừa theo nội dung.
 - [x] Kiểm tra lại render code và table trên desktop.
+
+## Tinh chỉnh khoảng cách code block theo ảnh đánh dấu
+
+- [x] Tăng khoảng cách giữa paragraph và toàn bộ khung code.
+- [x] Giảm header/footer trắng dư bên trong khung code.
+- [x] Xác nhận khung code gọn hơn mà không làm text sát mép.
