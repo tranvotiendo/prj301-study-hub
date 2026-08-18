@@ -70,28 +70,28 @@
 
 ## GitHub Pages deployment
 
-- [ ] Xác nhận repository GitHub đích và trạng thái GitHub Pages.
-- [ ] Thêm workflow build và deploy Pages khi push nhánh main.
-- [ ] Xác minh workflow và hướng dẫn bật nguồn GitHub Pages nếu cần.
+- [x] Xác nhận repository GitHub đích và trạng thái GitHub Pages.
+- [x] Thêm workflow build và deploy Pages khi push nhánh main.
+- [x] Xác minh workflow và hướng dẫn bật nguồn GitHub Pages nếu cần.
 
 ## Khắc phục GitHub Pages 404
 
-- [ ] Kiểm tra Pages site đã được kích hoạt và URL triển khai thực tế.
-- [ ] Kiểm tra kết quả workflow deploy gần nhất.
-- [ ] Xác nhận đường dẫn GitHub Pages hoạt động sau khi khắc phục.
+- [x] Kiểm tra Pages site đã được kích hoạt và URL triển khai thực tế.
+- [x] Kiểm tra kết quả workflow deploy gần nhất.
+- [x] Xác nhận đường dẫn GitHub Pages hoạt động sau khi khắc phục.
 
 ## Sửa router GitHub Pages
 
-- [ ] Cấu hình Wouter base path theo `import.meta.env.BASE_URL`.
-- [ ] Build với base `/prj301-study-hub/` và xác minh route gốc hiển thị Home.
+- [x] Cấu hình Wouter base path theo `import.meta.env.BASE_URL`.
+- [x] Build với base `/prj301-study-hub/` và xác minh route gốc hiển thị Home.
 
 ## Fallback đơn trang cho GitHub Pages
 
-- [ ] Render Home trực tiếp tại entry app thay vì phụ thuộc pathname của router.
-- [ ] Xác minh URL GitHub Pages gốc không còn hiển thị NotFound.
+- [x] Render Home trực tiếp tại entry app thay vì phụ thuộc pathname của router.
+- [x] Xác minh URL GitHub Pages gốc không còn hiển thị NotFound.
 
 ## Legacy GitHub Pages build
 
-- [ ] Build static site với base path repository.
-- [ ] Sao chép index, assets và `.nojekyll` vào root nhánh main.
-- [ ] Đồng bộ main và xác minh URL GitHub Pages legacy.
+- [x] Build static site với base path repository.
+- [x] Sao chép index, assets và `.nojekyll` vào root nhánh main.
+- [x] Đồng bộ main và xác minh URL GitHub Pages legacy.

@@ -34,3 +34,5 @@ Các heading và horizontal rule bên trong `.lesson-prose` đã bỏ đường 
 ## GitHub Pages deployment
 
 Workflow đã build thành công nhưng bước deploy trả về `Not Found` vì GitHub Pages chưa được bật cho repository. GitHub API và trình duyệt sandbox không có quyền đăng nhập/quản trị repo, nên việc chọn nguồn GitHub Actions cần người dùng thực hiện trong Settings → Pages.
+
+Giải pháp cuối cùng dùng nguồn legacy đang bật: static build có base `/prj301-study-hub/` đã được chép vào root của nhánh `main`, kèm `.nojekyll`. GitHub Pages chuyển sang `built`; URL `https://tranvotiendo.github.io/prj301-study-hub/` đã được kiểm tra trực tiếp và hiển thị trang học đầy đủ.
