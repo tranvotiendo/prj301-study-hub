@@ -157,7 +157,7 @@ export default function Home() {
           <div className="flex min-w-0 items-center gap-3.5">
             <img
               src="/manus-storage/prj301-user-logo_e0a4de5e.webp"
-              className="h-11 w-11 shrink-0 rounded-[14px_3px_14px_3px] border border-[#0f766e]/45 object-cover shadow-[3px_3px_0_#c65d3b]"
+              className="h-11 w-11 shrink-0 rounded-full border-2 border-[#0f766e]/45 object-cover shadow-[3px_3px_0_#c65d3b]"
               alt="Logo nhân vật người dùng chọn cho PRJ301 Study Hub"
             />
             <div className="min-w-0">
@@ -218,8 +218,8 @@ export default function Home() {
         </div>
       )}
 
-      <div className="mx-auto grid max-w-[1560px] grid-cols-1 lg:grid-cols-[235px_minmax(0,1fr)_270px] xl:grid-cols-[260px_minmax(0,1fr)_290px]">
-        <aside className="sticky top-[65px] hidden h-[calc(100vh-65px)] overflow-y-auto border-r border-[#dcd7ca] px-5 py-7 lg:block">
+      <div className="study-layout mx-auto grid max-w-[1560px] grid-cols-1 lg:grid-cols-[235px_minmax(0,1fr)_270px] xl:grid-cols-[260px_minmax(0,1fr)_290px]">
+        <aside className="study-nav sticky top-[65px] hidden h-[calc(100vh-65px)] overflow-y-auto border-r border-[#dcd7ca] px-5 py-7 lg:block">
           <div className="mb-5 flex items-center gap-2 text-[#5e706e]">
             <ListTree size={16} />
             <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Bản đồ bài học</span>
@@ -237,7 +237,7 @@ export default function Home() {
           </div>
         </aside>
 
-        <main className="min-w-0 px-4 py-6 sm:px-7 lg:px-10 lg:py-9 xl:px-14">
+        <main className="lesson-main min-w-0 px-4 py-6 sm:px-7 lg:px-10 lg:py-9 xl:px-14">
           <section className="relative mb-9 overflow-hidden border border-[#dad5c8] bg-[#ece7da] p-5 sm:p-7">
             <div className="absolute left-0 top-0 h-full w-1 bg-[#0f766e]" aria-hidden="true" />
             <div className="relative z-10 max-w-[38rem]">

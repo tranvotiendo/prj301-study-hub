@@ -234,8 +234,21 @@
 
 @media (min-width: 1024px) {
   .focus-mode .study-desk,
-  .focus-mode .sticky.border-r { display: none; }
-  .focus-mode > div:nth-of-type(3) { grid-template-columns: minmax(0, 1fr); max-width: 960px; }
+  .focus-mode .study-nav { display: none; }
+  .focus-mode .study-layout {
+    display: block;
+    max-width: 61rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .focus-mode .lesson-main {
+    width: 100%;
+    max-width: 61rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
 
 @media (max-width: 640px) {
