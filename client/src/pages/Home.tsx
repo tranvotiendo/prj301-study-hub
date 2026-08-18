@@ -11,18 +11,18 @@ import {
   CircleHelp,
   Clock3,
   FileText,
+  FolderOpen,
   Focus,
   GraduationCap,
   ListTree,
   Menu,
-  PanelLeftClose,
   RotateCcw,
   Search,
   Upload,
   X,
 } from "lucide-react";
 import { Streamdown } from "streamdown";
-import defaultMarkdown from "@/content/prj301-java-web.md?raw";
+import { bundledDocuments, type StudyDocument } from "@/content/library";
 
 type Session = {
   number: string;
@@ -45,10 +45,10 @@ const studyNotes = [
 ];
 
 export default function Home() {
-  const [markdown, setMarkdown] = useState(defaultMarkdown);
-  const [documentName, setDocumentName] = useState("PRJ301 — Java Web Application Development");
+  const [documents, setDocuments] = useState<StudyDocument[]>(bundledDocuments);
+  const [activeDocumentId, setActiveDocumentId] = useState(() => bundledDocuments[0]?.id ?? "");
   const [activeSession, setActiveSession] = useState("00");
-  const [completed, setCompleted] = useState<string[]>([]);
+  const [completionByDocument, setCompletionByDocument] = useState<Record<string, string[]>>({});
   const [progress, setProgress] = useState(0);
   const [search, setSearch] = useState("");
   const [focusMode, setFocusMode] = useState(false);
@@ -56,6 +56,9 @@ export default function Home() {
   const [noteIndex, setNoteIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const activeDocument = documents.find((document) => document.id === activeDocumentId) ?? documents[0] ?? null;
+  const markdown = activeDocument?.content ?? "# Chưa có tài liệu\n\nHãy thêm file Markdown để bắt đầu.";
+  const completed = completionByDocument[activeDocument?.id ?? ""] ?? [];
   const sessions = useMemo(() => getSessions(markdown), [markdown]);
   const coreSessions = sessions.filter((session) => session.number !== "00");
   const visibleSessions = sessions.filter((session) =>
@@ -67,16 +70,16 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("prj301-completed-sessions");
-      if (saved) setCompleted(JSON.parse(saved));
+      const saved = window.localStorage.getItem("prj301-completed-documents");
+      if (saved) setCompletionByDocument(JSON.parse(saved));
     } catch {
-      setCompleted([]);
+      setCompletionByDocument({});
     }
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("prj301-completed-sessions", JSON.stringify(completed));
-  }, [completed]);
+    window.localStorage.setItem("prj301-completed-documents", JSON.stringify(completionByDocument));
+  }, [completionByDocument]);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -113,28 +116,48 @@ export default function Home() {
 
   const toggleComplete = (number: string) => {
     if (number === "00") return;
-    setCompleted((items) => (items.includes(number) ? items.filter((item) => item !== number) : [...items, number]));
+    if (!activeDocument) return;
+    setCompletionByDocument((allProgress) => {
+      const current = allProgress[activeDocument.id] ?? [];
+      const next = current.includes(number) ? current.filter((item) => item !== number) : [...current, number];
+      return { ...allProgress, [activeDocument.id]: next };
+    });
   };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setMarkdown(String(reader.result ?? ""));
-      setDocumentName(file.name.replace(/\.md$/i, ""));
-      setCompleted([]);
-      setActiveSession("00");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-    reader.readAsText(file);
-    event.target.value = "";
+  const selectDocument = (id: string) => {
+    setActiveDocumentId(id);
+    setActiveSession("00");
+    setSearch("");
+    setNavOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const resetDocument = () => {
-    setMarkdown(defaultMarkdown);
-    setDocumentName("PRJ301 — Java Web Application Development");
-    setCompleted([]);
+  const handleFiles = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const files = Array.from(input.files ?? []).filter((file) => file.name.toLowerCase().endsWith(".md"));
+    if (!files.length) return;
+
+    const additions = await Promise.all(
+      files.map(async (file, index) => ({
+        id: `uploaded-${file.name}-${file.lastModified}-${index}`,
+        title: file.name.replace(/\.md$/i, ""),
+        fileName: file.name,
+        content: await file.text(),
+        source: "uploaded" as const,
+      })),
+    );
+
+    setDocuments((current) => [
+      ...current,
+      ...additions.filter((addition) => !current.some((document) => document.id === addition.id)),
+    ]);
+    selectDocument(additions[0].id);
+    input.value = "";
+  };
+
+  const removeUploadedDocuments = () => {
+    setDocuments((current) => current.filter((document) => document.source !== "uploaded"));
+    setActiveDocumentId(bundledDocuments[0]?.id ?? "");
     setActiveSession("00");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -157,7 +180,7 @@ export default function Home() {
           <div className="flex min-w-0 items-center gap-3.5">
             <img
               src="/manus-storage/prj301-user-logo_e0a4de5e.webp"
-              className="h-11 w-11 shrink-0 rounded-full border-2 border-[#0f766e]/45 object-cover shadow-[3px_3px_0_#c65d3b]"
+              className="h-11 w-11 shrink-0 rounded-full border-2 border-[#0f766e]/45 object-cover"
               alt="Logo nhân vật người dùng chọn cho PRJ301 Study Hub"
             />
             <div className="min-w-0">
@@ -194,9 +217,9 @@ export default function Home() {
               onClick={() => fileInputRef.current?.click()}
               className="flex h-10 items-center gap-2 bg-[#17334a] px-3 text-xs font-bold text-white shadow-[3px_3px_0_#c65d3b] transition-transform hover:-translate-y-0.5 active:scale-[.97]"
             >
-              <Upload size={15} /> <span className="hidden sm:inline">Tải Markdown</span>
+              <Upload size={15} /> <span className="hidden sm:inline">Thêm Markdown</span>
             </button>
-            <input ref={fileInputRef} type="file" accept=".md,text/markdown" className="hidden" onChange={handleFile} />
+            <input ref={fileInputRef} type="file" accept=".md,text/markdown" multiple className="hidden" onChange={handleFiles} />
           </div>
         </div>
       </header>
@@ -213,7 +236,11 @@ export default function Home() {
                 <X size={17} />
               </button>
             </div>
-            <SessionList sessions={sessions} active={activeSession} completed={completed} onSelect={scrollToSession} />
+            <DocumentLibrary documents={documents} activeDocumentId={activeDocument?.id ?? ""} onSelect={selectDocument} />
+            <div className="mt-6 border-t border-[#dcd7ca] pt-5">
+              <p className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Mục lục tài liệu</p>
+              <SessionList sessions={sessions} active={activeSession} completed={completed} onSelect={scrollToSession} />
+            </div>
           </aside>
         </div>
       )}
@@ -222,9 +249,16 @@ export default function Home() {
         <aside className="study-nav sticky top-[65px] hidden h-[calc(100vh-65px)] overflow-y-auto border-r border-[#dcd7ca] px-5 py-7 lg:block">
           <div className="mb-5 flex items-center gap-2 text-[#5e706e]">
             <ListTree size={16} />
-            <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Bản đồ bài học</span>
+            <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Thư viện bài học</span>
           </div>
+          <DocumentLibrary documents={documents} activeDocumentId={activeDocument?.id ?? ""} onSelect={selectDocument} />
+          <div className="mt-7 border-t border-[#dcd7ca] pt-5">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Mục lục tài liệu</p>
+              <span className="font-mono text-[10px] text-[#0f766e]">{documents.length} file</span>
+            </div>
           <SessionList sessions={visibleSessions} active={activeSession} completed={completed} onSelect={scrollToSession} />
+          </div>
           {search && visibleSessions.length === 0 && (
             <p className="mt-4 border-l-2 border-[#c65d3b] pl-3 text-xs leading-relaxed text-[#69736f]">Không có session phù hợp. Thử tìm “HTTP” hoặc “Servlet”.</p>
           )}
@@ -232,7 +266,7 @@ export default function Home() {
             <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Nguồn hiển thị</p>
             <div className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-[#556764]">
               <FileText size={15} className="mt-0.5 shrink-0 text-[#0f766e]" />
-              <span className="line-clamp-3">{documentName}</span>
+              <span className="line-clamp-3">{activeDocument?.fileName ?? "Chưa có file"}</span>
             </div>
           </div>
         </aside>
@@ -243,10 +277,10 @@ export default function Home() {
             <div className="relative z-10 max-w-[38rem]">
               <div className="mb-6 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#0f766e]">
                 <span className="h-px w-8 bg-[#0f766e]" />
-                Tài liệu đang mở
+                Tài liệu {activeDocument?.source === "uploaded" ? "tải từ máy" : "có sẵn"}
               </div>
               <h1 className="font-display text-3xl leading-[1.05] tracking-[-0.045em] text-[#17334a] sm:text-4xl">Đọc luồng request.<br />Hiểu đường đi của dữ liệu.</h1>
-              <p className="mt-4 max-w-lg text-sm leading-7 text-[#52605d]">Một bàn đọc gọn gàng cho nội dung Markdown. Chọn session ở mục lục, đánh dấu phần đã học và nạp bất kỳ file <code className="rounded-sm bg-white/70 px-1.5 py-0.5 font-mono text-[11px] text-[#0f766e]">.md</code> nào khi cần.</p>
+              <p className="mt-4 max-w-lg text-sm leading-7 text-[#52605d]">Đang đọc <strong>{activeDocument?.title ?? "tài liệu Markdown"}</strong>. Chọn file trong thư viện, hoặc thêm nhiều file <code className="rounded-sm bg-white/70 px-1.5 py-0.5 font-mono text-[11px] text-[#0f766e]">.md</code> từ máy mà không thay thế tài liệu cũ.</p>
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-[#39565b]">
                 <span className="flex items-center gap-1.5"><BookMarked size={15} className="text-[#c65d3b]" /> {coreSessions.length || 5} sessions</span>
                 <span className="flex items-center gap-1.5"><Clock3 size={15} className="text-[#c65d3b]" /> {Math.max(12, Math.round(markdown.length / 1100))} phút đọc</span>
@@ -261,9 +295,9 @@ export default function Home() {
 
           <div className="mb-7 flex items-center justify-between border-y border-[#dcd7ca] py-3">
             <div className="flex items-center gap-2 text-xs text-[#66736d]"><span className="h-2 w-2 rounded-full bg-[#0f766e]" /> Markdown rendered live</div>
-            {markdown !== defaultMarkdown && (
-              <button onClick={resetDocument} className="flex items-center gap-1.5 text-xs font-bold text-[#0f766e] hover:text-[#c65d3b]">
-                <RotateCcw size={14} /> Khôi phục PRJ301
+            {documents.some((document) => document.source === "uploaded") && (
+              <button onClick={removeUploadedDocuments} className="flex items-center gap-1.5 text-xs font-bold text-[#0f766e] hover:text-[#c65d3b]">
+                <RotateCcw size={14} /> Bỏ file đã tải
               </button>
             )}
           </div>
@@ -343,6 +377,39 @@ function SessionList({
           >
             <span className={`session-marker grid h-5 min-w-5 place-items-center text-[9px] font-extrabold ${isComplete ? "bg-[#0f766e] text-white" : isActive ? "bg-[#cce4dc] text-[#0f766e]" : "bg-[#e6e3d9] text-[#72807a]"}`}>{isComplete ? <Check size={12} strokeWidth={3} /> : session.number}</span>
             <span className="line-clamp-2 text-xs font-semibold leading-4">{session.title}</span>
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+function DocumentLibrary({
+  documents,
+  activeDocumentId,
+  onSelect,
+}: {
+  documents: StudyDocument[];
+  activeDocumentId: string;
+  onSelect: (id: string) => void;
+}) {
+  return (
+    <nav aria-label="Thư viện tài liệu Markdown" className="space-y-1">
+      {documents.map((document) => {
+        const isActive = activeDocumentId === document.id;
+        return (
+          <button
+            key={document.id}
+            onClick={() => onSelect(document.id)}
+            className={`group flex w-full items-start gap-2.5 border-l-2 px-2 py-2.5 text-left transition-all ${isActive ? "border-[#c65d3b] bg-[#f1e8dc] text-[#17334a]" : "border-transparent text-[#64706c] hover:border-[#0f766e] hover:bg-[#efede5] hover:text-[#17334a]"}`}
+          >
+            <span className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center ${isActive ? "bg-[#c65d3b] text-white" : "bg-[#e4e5df] text-[#0f766e]"}`}>
+              <FolderOpen size={12} />
+            </span>
+            <span className="min-w-0">
+              <span className="line-clamp-2 block text-xs font-bold leading-4">{document.title}</span>
+              <span className="mt-1 block truncate font-mono text-[9px] font-medium text-[#7b8781]">{document.source === "uploaded" ? "TẢI TỪ MÁY · " : "CÓ SẴN · "}{document.fileName}</span>
+            </span>
           </button>
         );
       })}

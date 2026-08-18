@@ -12,3 +12,5 @@ Người dùng yêu cầu thay logo hiện tại bằng ảnh nhân vật họ c
 Đã xác nhận ở desktop và mobile: logo mới hiển thị gọn trong header; thông tin trong phần bài học giữ độ tương phản rõ trên nền giấy ấm. Code block đã được ép dùng nền navy đậm, chữ gần trắng và opacity đầy đủ để tránh bị nhạt bởi theme của bộ render Markdown.
 
 Lượt tinh chỉnh cuối đã chuyển layout ở chế độ tập trung từ lưới ba cột sang khối đơn có chiều rộng tối đa 61rem và margin tự động hai bên. Vì vậy, khi hai sidebar bị ẩn, phần bài học vẫn cân giữa vùng nhìn thay vì kế thừa cột chính nằm lệch trong grid cũ. Logo được crop tròn, giữ đúng tỉ lệ ảnh và đã kiểm tra hiển thị ở desktop/mobile.
+
+Thư viện đa Markdown đã được đưa vào `client/src/content/library.ts`. Bộ nạp tự tìm tất cả file `.md` đặt trong `client/src/content/`; danh mục `documentCatalog` là nơi chỉnh tên hiển thị và thứ tự nếu cần. Nút “Thêm Markdown” nhận nhiều file cùng lúc và đưa tất cả vào thư viện đang mở, không xóa tài liệu cũ. Kiểm tra desktop/mobile xác nhận logo đã bỏ bóng và giao diện thư viện hiển thị đúng.

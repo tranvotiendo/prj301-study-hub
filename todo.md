@@ -10,3 +10,11 @@
 - [x] Căn giữa cột bài học khi ẩn hai sidebar trong chế độ tập trung.
 - [x] Chuyển logo người dùng chọn sang avatar tròn, không méo hình.
 - [x] Kiểm tra lại giao diện tập trung trên desktop và mobile.
+
+## Thư viện Markdown nhiều tài liệu
+
+- [x] Bỏ bóng trang trí phía sau logo tròn.
+- [x] Tạo file cấu hình để người dùng thêm sẵn nhiều Markdown trong mã nguồn.
+- [x] Hiển thị thư viện tài liệu và cho phép chuyển qua lại giữa các file Markdown đã cấu hình.
+- [x] Cho phép tải nhiều file Markdown trong một lần và thêm vào thư viện hiện tại, không thay thế tài liệu cũ.
+- [x] Kiểm tra render nhiều tài liệu, desktop và mobile.
