@@ -14,3 +14,5 @@ Người dùng yêu cầu thay logo hiện tại bằng ảnh nhân vật họ c
 Lượt tinh chỉnh cuối đã chuyển layout ở chế độ tập trung từ lưới ba cột sang khối đơn có chiều rộng tối đa 61rem và margin tự động hai bên. Vì vậy, khi hai sidebar bị ẩn, phần bài học vẫn cân giữa vùng nhìn thay vì kế thừa cột chính nằm lệch trong grid cũ. Logo được crop tròn, giữ đúng tỉ lệ ảnh và đã kiểm tra hiển thị ở desktop/mobile.
 
 Thư viện đa Markdown đã được đưa vào `client/src/content/library.ts`. Bộ nạp tự tìm tất cả file `.md` đặt trong `client/src/content/`; danh mục `documentCatalog` là nơi chỉnh tên hiển thị và thứ tự nếu cần. Nút “Thêm Markdown” nhận nhiều file cùng lúc và đưa tất cả vào thư viện đang mở, không xóa tài liệu cũ. Kiểm tra desktop/mobile xác nhận logo đã bỏ bóng và giao diện thư viện hiển thị đúng.
+
+Chế độ Focus hiện mở rộng vùng bài học đến tối đa 100rem; phần nội dung Markdown dùng tối đa 82rem để đọc được nhiều theo chiều ngang khi cần. Sidebar và các nhãn UI cố định đã dùng tiếng Anh. Hệ thống font cho heading bài học và section chuyển sang system sans-serif có fallback; Key takeaways giờ dùng đúng style của heading cấp 2 thông thường.

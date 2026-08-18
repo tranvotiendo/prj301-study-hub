@@ -198,7 +198,7 @@ export default function Home() {
                 onKeyDown={(event) => {
                   if (event.key === "Enter" && visibleSessions[0]) scrollToSession(visibleSessions[0]);
                 }}
-                placeholder="Tìm trong mục lục…"
+                placeholder="Search outline…"
                 className="w-full bg-transparent text-sm outline-none placeholder:text-[#848982]"
                 aria-label="Tìm session"
               />
@@ -211,13 +211,13 @@ export default function Home() {
               onClick={() => setFocusMode((value) => !value)}
               className={`hidden h-10 items-center gap-2 border px-3 text-xs font-bold transition-all sm:flex ${focusMode ? "border-[#0f766e] bg-[#0f766e] text-white" : "border-[#d8d2c3] bg-[#fffdf7] text-[#35505a] hover:border-[#0f766e]"}`}
             >
-              <Focus size={15} /> {focusMode ? "Thoát tập trung" : "Tập trung"}
+              <Focus size={15} /> {focusMode ? "Exit Focus" : "Focus"}
             </button>
             <button
               onClick={() => fileInputRef.current?.click()}
               className="flex h-10 items-center gap-2 bg-[#17334a] px-3 text-xs font-bold text-white shadow-[3px_3px_0_#c65d3b] transition-transform hover:-translate-y-0.5 active:scale-[.97]"
             >
-              <Upload size={15} /> <span className="hidden sm:inline">Thêm Markdown</span>
+              <Upload size={15} /> <span className="hidden sm:inline">Add Markdown</span>
             </button>
             <input ref={fileInputRef} type="file" accept=".md,text/markdown" multiple className="hidden" onChange={handleFiles} />
           </div>
@@ -231,14 +231,14 @@ export default function Home() {
             onMouseDown={(event) => event.stopPropagation()}
           >
             <div className="mb-6 flex items-center justify-between">
-              <span className="font-display text-xl text-[#17334a]">Mục lục</span>
+              <span className="font-display text-xl text-[#17334a]">Library</span>
               <button className="grid h-9 w-9 place-items-center border border-[#d8d2c3]" onClick={() => setNavOpen(false)} aria-label="Đóng mục lục">
                 <X size={17} />
               </button>
             </div>
             <DocumentLibrary documents={documents} activeDocumentId={activeDocument?.id ?? ""} onSelect={selectDocument} />
             <div className="mt-6 border-t border-[#dcd7ca] pt-5">
-              <p className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Mục lục tài liệu</p>
+              <p className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Document outline</p>
               <SessionList sessions={sessions} active={activeSession} completed={completed} onSelect={scrollToSession} />
             </div>
           </aside>
@@ -249,21 +249,21 @@ export default function Home() {
         <aside className="study-nav sticky top-[65px] hidden h-[calc(100vh-65px)] overflow-y-auto border-r border-[#dcd7ca] px-5 py-7 lg:block">
           <div className="mb-5 flex items-center gap-2 text-[#5e706e]">
             <ListTree size={16} />
-            <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Thư viện bài học</span>
+            <span className="text-[10px] font-extrabold uppercase tracking-[0.18em]">Study library</span>
           </div>
           <DocumentLibrary documents={documents} activeDocumentId={activeDocument?.id ?? ""} onSelect={selectDocument} />
           <div className="mt-7 border-t border-[#dcd7ca] pt-5">
             <div className="mb-4 flex items-center justify-between">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Mục lục tài liệu</p>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Document outline</p>
               <span className="font-mono text-[10px] text-[#0f766e]">{documents.length} file</span>
             </div>
           <SessionList sessions={visibleSessions} active={activeSession} completed={completed} onSelect={scrollToSession} />
           </div>
           {search && visibleSessions.length === 0 && (
-            <p className="mt-4 border-l-2 border-[#c65d3b] pl-3 text-xs leading-relaxed text-[#69736f]">Không có session phù hợp. Thử tìm “HTTP” hoặc “Servlet”.</p>
+            <p className="mt-4 border-l-2 border-[#c65d3b] pl-3 text-xs leading-relaxed text-[#69736f]">No matching section. Try “HTTP” or “Servlet”.</p>
           )}
           <div className="mt-8 border-t border-[#dcd7ca] pt-5">
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Nguồn hiển thị</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#84908b]">Current file</p>
             <div className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-[#556764]">
               <FileText size={15} className="mt-0.5 shrink-0 text-[#0f766e]" />
               <span className="line-clamp-3">{activeDocument?.fileName ?? "Chưa có file"}</span>
@@ -277,7 +277,7 @@ export default function Home() {
             <div className="relative z-10 max-w-[38rem]">
               <div className="mb-6 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#0f766e]">
                 <span className="h-px w-8 bg-[#0f766e]" />
-                Tài liệu {activeDocument?.source === "uploaded" ? "tải từ máy" : "có sẵn"}
+                {activeDocument?.source === "uploaded" ? "Uploaded document" : "Bundled document"}
               </div>
               <h1 className="font-display text-3xl leading-[1.05] tracking-[-0.045em] text-[#17334a] sm:text-4xl">Đọc luồng request.<br />Hiểu đường đi của dữ liệu.</h1>
               <p className="mt-4 max-w-lg text-sm leading-7 text-[#52605d]">Đang đọc <strong>{activeDocument?.title ?? "tài liệu Markdown"}</strong>. Chọn file trong thư viện, hoặc thêm nhiều file <code className="rounded-sm bg-white/70 px-1.5 py-0.5 font-mono text-[11px] text-[#0f766e]">.md</code> từ máy mà không thay thế tài liệu cũ.</p>
@@ -294,10 +294,10 @@ export default function Home() {
           </section>
 
           <div className="mb-7 flex items-center justify-between border-y border-[#dcd7ca] py-3">
-            <div className="flex items-center gap-2 text-xs text-[#66736d]"><span className="h-2 w-2 rounded-full bg-[#0f766e]" /> Markdown rendered live</div>
+            <div className="flex items-center gap-2 text-xs text-[#66736d]"><span className="h-2 w-2 rounded-full bg-[#0f766e]" /> LIVE MARKDOWN</div>
             {documents.some((document) => document.source === "uploaded") && (
               <button onClick={removeUploadedDocuments} className="flex items-center gap-1.5 text-xs font-bold text-[#0f766e] hover:text-[#c65d3b]">
-                <RotateCcw size={14} /> Bỏ file đã tải
+                <RotateCcw size={14} /> Clear uploads
               </button>
             )}
           </div>
@@ -315,8 +315,8 @@ export default function Home() {
 
           <section className="border border-[#d9d2c3] bg-[#fffdf7] p-4 shadow-[4px_4px_0_rgba(23,51,74,.07)]">
             <div className="flex items-end justify-between">
-              <div><p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7a8580]">Tiến độ session</p><p className="mt-1 font-display text-3xl text-[#17334a]">{completion}%</p></div>
-              <span className="rounded-full bg-[#e0f0eb] px-2 py-1 text-[10px] font-bold text-[#0f766e]">{completed.length}/{coreSessions.length || 5} xong</span>
+              <div><p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7a8580]">Session progress</p><p className="mt-1 font-display text-3xl text-[#17334a]">{completion}%</p></div>
+              <span className="rounded-full bg-[#e0f0eb] px-2 py-1 text-[10px] font-bold text-[#0f766e]">{completed.length}/{coreSessions.length || 5} done</span>
             </div>
             <div className="mt-4 h-2 overflow-hidden bg-[#e9e4d9]"><div className="h-full bg-[#0f766e] transition-[width] duration-300" style={{ width: `${completion}%` }} /></div>
             <div className="mt-4 space-y-2">
@@ -338,9 +338,9 @@ export default function Home() {
           </section>
 
           <section className="relative mt-6 overflow-hidden border-l-2 border-[#c65d3b] bg-[#efe8dc] p-4">
-            <div className="flex items-center gap-2"><CircleHelp size={16} className="text-[#c65d3b]" /><span className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7f5b4f]">Cách học nhanh</span></div>
+            <div className="flex items-center gap-2"><CircleHelp size={16} className="text-[#c65d3b]" /><span className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#7f5b4f]">Study tip</span></div>
             <p className="mt-2 text-xs leading-5 text-[#5c514c]">{studyNotes[noteIndex]}</p>
-            <button onClick={() => setNoteIndex((value) => (value + 1) % studyNotes.length)} className="mt-3 flex items-center gap-1 text-[11px] font-bold text-[#0f766e]">Đổi mẹo <ChevronRight size={13} /></button>
+            <button onClick={() => setNoteIndex((value) => (value + 1) % studyNotes.length)} className="mt-3 flex items-center gap-1 text-[11px] font-bold text-[#0f766e]">Next tip <ChevronRight size={13} /></button>
           </section>
 
           <div className="mt-6 overflow-hidden border border-[#d9d2c3] bg-[#fffdf7]">

@@ -18,3 +18,11 @@
 - [x] Hiển thị thư viện tài liệu và cho phép chuyển qua lại giữa các file Markdown đã cấu hình.
 - [x] Cho phép tải nhiều file Markdown trong một lần và thêm vào thư viện hiện tại, không thay thế tài liệu cũ.
 - [x] Kiểm tra render nhiều tài liệu, desktop và mobile.
+
+## Tối ưu trải nghiệm đọc
+
+- [x] Mở rộng chiều ngang nội dung trong chế độ Focus.
+- [x] Chuyển các nhãn sidebar và điều khiển cố định sang tiếng Anh.
+- [x] Dùng font hệ thống an toàn cho các nhãn section và sidebar.
+- [x] Đưa Key takeaways về kiểu chữ và cỡ chữ tương đương section thường.
+- [x] Kiểm tra giao diện đọc sau khi cập nhật.
