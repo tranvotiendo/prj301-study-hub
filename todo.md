@@ -89,3 +89,9 @@
 
 - [ ] Render Home trực tiếp tại entry app thay vì phụ thuộc pathname của router.
 - [ ] Xác minh URL GitHub Pages gốc không còn hiển thị NotFound.
+
+## Legacy GitHub Pages build
+
+- [ ] Build static site với base path repository.
+- [ ] Sao chép index, assets và `.nojekyll` vào root nhánh main.
+- [ ] Đồng bộ main và xác minh URL GitHub Pages legacy.
