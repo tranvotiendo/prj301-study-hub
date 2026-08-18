@@ -46,3 +46,9 @@
 - [x] Tăng khoảng cách giữa paragraph và toàn bộ khung code.
 - [x] Giảm header/footer trắng dư bên trong khung code.
 - [x] Xác nhận khung code gọn hơn mà không làm text sát mép.
+
+## Sửa trực tiếp container code renderer
+
+- [x] Xoá spacer trên/dưới bên trong wrapper của code block.
+- [x] Đặt margin ngoài riêng giữa code block và paragraph kế tiếp.
+- [x] Kiểm tra bằng ví dụ GET text trong tài liệu.
